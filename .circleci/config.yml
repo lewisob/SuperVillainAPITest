@@ -8,3 +8,6 @@ workflows:
   maven_test:
     jobs:
       - maven/test # checkout, build, test, and upload test results
+      - slack/status:
+          fail_only: false
+          mentions: "lewisob"
