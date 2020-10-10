@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   maven: circleci/maven@0.0.12
+  slack: circleci/slack@4.0.0
 
 workflows:
   maven_test:
