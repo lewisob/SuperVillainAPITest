@@ -2,21 +2,18 @@ version: '2.1'
 orbs:
   maven: circleci/maven@0.0.12
   slack: circleci/slack@3.4.2
-
 jobs:
-  notify:
+  test-and-notify:
     docker:
       - image: 'cimg/base:stable'
     steps:
       - slack/notify:
           channel: circle-ci
-          event: pass
-          template: success_tagged_deploy_1
-          slack/status:
-            fail_only: false
-            mentions: "here"
+      - slack/status:
+          fail_only: false
+          mentions: "here"
 workflows:
-  maven_test:
+  build-and-notify:
     jobs:
       - maven/test
-      - notify
+      - test-and-notify
