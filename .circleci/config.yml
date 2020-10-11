@@ -2,18 +2,24 @@ version: '2.1'
 orbs:
   maven: circleci/maven@0.0.12
   slack: circleci/slack@4.0
-
-workflows:
-  maven_test:
-    jobs:
-      docker:
-        - image: 'cimg/base:stable'
-      - maven/test # checkout, build, test, and upload test results
-        - slack/notify:
-          channel: circleci
+working_directory: ~/SuperVillainAPITest
+jobs:
+  notify:
+    docker:
+      - image: 'cimg/base:stable'
+    steps:
+      - slack/notify:
+          channel: circle-ci
           event: pass
           template: success_tagged_deploy_1
-        - slack/notify:
+      - slack/notify:
           channel: circle-ci
           event: fail
           template: basic_fail_1
+workflows:
+  maven_test:
+    jobs:
+      - maven/test
+  send-notification:
+    jobs:
+      - notify
