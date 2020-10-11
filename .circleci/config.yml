@@ -1,13 +1,23 @@
-version: 2.1
-
+version: '2.1'
 orbs:
   maven: circleci/maven@0.0.12
-  slack: circleci/slack@4.0.0
+  slack: circleci/slack@4.0
 
+working_directory: ~/SuperVillainAPITest
+
+jobs:
+  notify:
+    docker:
+      - image: 'cimg/base:stable'
+    steps:
+      - slack/notify:
+          channel: circleci
+          event: always
 workflows:
   maven_test:
     jobs:
-      - maven/test # checkout, build, test, and upload test results
-      - slack/notify:
-          fail_only: false
-          mentions: "lewisob"
+      - maven/test
+  send-notification:
+    jobs:
+      - notify:
+          context: slack-secrets
