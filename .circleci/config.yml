@@ -19,4 +19,4 @@ workflows:
       - maven/test
   send-notification:
     jobs:
-      - notify:
+      - notify
