@@ -37,6 +37,4 @@ workflows:
   maven_test:
     jobs:
       - maven/test
-  send-notification:
-    jobs:
       - notify
