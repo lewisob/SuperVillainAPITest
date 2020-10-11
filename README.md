@@ -15,6 +15,6 @@ Or run from [CircleCI](https://app.circleci.com/pipelines/github/lewisob/SuperVi
 
 ## Test results
 The project would benefit from a nice html report.
-For now the results are printed in console or can be found in a simple text file at /target/surefire-reports/CovidUsersTest.txt.
+For now the results are printed in console or can be found in a simple text file at `/target/surefire-reports/CovidUsersTest.txt`.
 
 The CircleCI results are sent to the #circle-ci channel in this [Slack workspace](https://join.slack.com/t/lewis-test-group/shared_invite/zt-i4wg3c7o-Y7e7JnYayBDJBaQA8tpg~Q)
