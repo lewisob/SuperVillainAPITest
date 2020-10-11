@@ -12,7 +12,12 @@ jobs:
     steps:
       - slack/notify:
           channel: circleci
-          event: always
+          event: success
+          template: success_tagged_deploy_1
+      - slack/notify:
+          channel: circleci
+          event: pass
+          template: basic_fail_1
 workflows:
   maven_test:
     jobs:
