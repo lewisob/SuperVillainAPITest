@@ -1,7 +1,7 @@
 version: '2.1'
 orbs:
   maven: circleci/maven@0.0.12
-  slack: circleci/slack@4.0
+  slack: circleci/slack@3.4.2
 
 jobs:
   notify:
@@ -12,27 +12,9 @@ jobs:
           channel: circle-ci
           event: pass
           template: success_tagged_deploy_1
-      - slack/notify:
-          channel: circle-ci
-          event: fail
-          template: basic_fail_1
-      - slack/notify:
-          custom: |
-            {
-              "blocks": [
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "plain_text",
-                      "text": "*This is a text notification*",
-                      "emoji": true
-                    }
-                  ]
-                }
-              ]
-            }
-          event: always
+          slack/status:
+            fail_only: false
+            mentions: "here"
 workflows:
   maven_test:
     jobs:
