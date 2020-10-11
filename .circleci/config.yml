@@ -9,11 +9,9 @@ jobs:
       - image: 'cimg/base:stable'
     steps:
       - slack/notify:
-          channel: circle-ci
           event: pass
           template: success_tagged_deploy_1
       - slack/notify:
-          channel: circle-ci
           event: fail
           template: basic_fail_1
       - slack/notify:
