@@ -78,8 +78,8 @@ public class CovidUsersTest {
   }
 
   @Test
-  public void put_update_user() {
-    String existingUser = "{\"username\":\"Lewis\",\"score\":490}";
+  public void put_update_user_to_5000_points() {
+    String existingUser = "{\"username\":\"Lewis\",\"score\":5000}";
 
     given().
       contentType(ContentType.JSON).
